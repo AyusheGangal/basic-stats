@@ -28,6 +28,7 @@ public class BasicStatsGUI implements View
     private JTextField jtfMedian;
     private JTextField jtfMean;
     private JTextArea jtaNumbers;
+	private JTextField jtfNumber;
     private JFrame jfMain = new JFrame(APP_TITLE);
 
     public BasicStatsGUI() {	
@@ -38,18 +39,25 @@ public class BasicStatsGUI implements View
 	
 	// Panel that shows stats about the numbers
 	JPanel jpStats = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	jtfNumber = new JTextField(5);
+	jtfNumber.setEditable(true);
+
 	jtfCount = new JTextField(5);
 	jtfCount.setEditable(false);
+	
 	jtfMedian = new JTextField(5);
 	jtfMedian.setEditable(false);
+	
 	jtfMean = new JTextField(5);
 	jtfMean.setEditable(false);
+	
 	jpStats.add(new JLabel("Numbers:"));
 	jpStats.add(jtfCount);
 	jpStats.add(new JLabel("Median:"));
 	jpStats.add(jtfMedian);
 	jpStats.add(new JLabel("Mean:"));
 	jpStats.add(jtfMean);
+	
 	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
 	
 	// TextArea that shows all the numbers
@@ -71,7 +79,7 @@ public class BasicStatsGUI implements View
 		    update(model);
 		}
 	    });
-	JTextField jtfNumber = new JTextField(5);
+
 	JButton jbAdd = new JButton("Add number");
 	jbAdd.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -79,7 +87,7 @@ public class BasicStatsGUI implements View
 		    
 		    Double num = Double.parseDouble(jtfNumber.getText());
 		    model.addNumber(num);
-
+			
 		    update(model);
 		}
 	    });
@@ -94,7 +102,8 @@ public class BasicStatsGUI implements View
 
     public void update(BasicStatsModel model) {
 	if (model.getArrayDouble().length == 0) {
-	    jtaNumbers.setText("");
+	    jtfNumber.setText("");
+		jtaNumbers.setText("");
 	    jtfCount.setText("");
 	    jtfMedian.setText("");
 	    jtfMean.setText("");

@@ -1,6 +1,8 @@
 package gui;
 
 import java.util.*;
+import java.util.List;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -30,6 +32,8 @@ public class BasicStatsGUI implements View
     private JTextArea jtaNumbers;
 	private JTextField jtfNumber;
     private JFrame jfMain = new JFrame(APP_TITLE);
+
+	public List<View> Views = new ArrayList<>();
 
     public BasicStatsGUI() {	
 	// Create the main frame of the application, and set size and position

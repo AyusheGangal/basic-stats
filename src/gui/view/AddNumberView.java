@@ -10,7 +10,7 @@ import model.BasicStatsModel;
 
 public class AddNumberView implements View
 {
-    public JTextField jtfNumber;
+    private JTextField jtfNumber;
     protected BasicStatsModel model;
 
     public AddNumberView()
@@ -28,6 +28,16 @@ public class AddNumberView implements View
     {
         Double num = Double.parseDouble(jtfNumber.getText());
         model.addNumber(num);
+    }
+
+    @Override
+    public JTextField getView(){
+        return this.jtfNumber;
+    }
+
+    @Override
+    public void reset(){
+        jtfNumber.setText("");
     }
 }
 

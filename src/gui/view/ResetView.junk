@@ -29,4 +29,9 @@ public class ResetView implements View {
         jtfMedian.setText("");
         jtfMean.setText("");
     }
+
+    @Override
+    public JTextField getView(){
+        return this.jtfNumber;
+    }
 }

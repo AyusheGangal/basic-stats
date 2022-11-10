@@ -18,4 +18,14 @@ public class CountView implements View{
         int count = model.getArrayDouble().length;
 	    jtfCount.setText("" + count);	
     }
+
+    @Override
+    public JTextField getView(){
+        return this.jtfCount;
+    }
+
+    @Override
+    public void reset(){
+        jtfCount.setText("");
+    }
 }

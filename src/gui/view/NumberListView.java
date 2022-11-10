@@ -18,4 +18,13 @@ public class NumberListView implements View{
 	    jtaNumbers.append(num + ","); 
     }
 
+    @Override
+    public JTextArea getView(){
+        return this.jtaNumbers;
+    }
+
+    @Override
+    public void reset(){
+        jtaNumbers.setText("");
+    }
 }

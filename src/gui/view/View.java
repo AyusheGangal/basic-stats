@@ -13,13 +13,7 @@ import model.BasicStatsModel;
  */
 public interface View
 {
-    Component jtfNumber = null;
-    Component jbReset = null;
-    Component jtfCount = null;
-    Component jtfMean = null;
-    Component jtfMedian = null;
-    Component jtaNumbers = null;
-    Component jbAdd = null;
+
 
     /**
      * Updates this View to visualize the current BasicStatsModel.
@@ -27,4 +21,8 @@ public interface View
      * @param model The current BasicStatsModel to be visualized
      */
     public void update(BasicStatsModel model);
+
+    public Component getView();
+
+    public void reset();
 }

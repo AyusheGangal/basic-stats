@@ -18,4 +18,14 @@ public class MeanView implements View{
         double mean = BasicStats.mean(model.getArrayDouble());
 	    jtfMean.setText("" + mean);
     }
+
+    @Override
+    public JTextField getView(){
+        return this.jtfMean;
+    }
+
+    @Override
+    public void reset(){
+        jtfMean.setText("");
+    }
 }

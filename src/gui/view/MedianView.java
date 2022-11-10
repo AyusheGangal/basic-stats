@@ -19,4 +19,14 @@ public class MedianView implements View{
         double median = BasicStats.median(model.getArrayDouble());
 	    jtfMedian.setText("" + median);	
     }
+
+    @Override
+    public JTextField getView(){
+        return this.jtfMedian;
+    }
+
+    @Override
+    public void reset(){
+        jtfMedian.setText("");
+    }
 }

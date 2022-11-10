@@ -23,12 +23,8 @@ import gui.view.*;
 public class BasicStatsGUI
 {
     public static final String APP_TITLE = "Simple stats";
-
     private static BasicStatsModel model = new BasicStatsModel();
-    private JTextArea jtaNumbers;
-	private JTextField jtfNumber;
     private JFrame jfMain = new JFrame(APP_TITLE);
-
 	private List<View> Views = new ArrayList<View>();
 	private AddNumberView addNumberView;
 
@@ -50,8 +46,8 @@ public class BasicStatsGUI
 		{
 			addNumberView.update(model);	
 			update(model);
-	}
-		});
+		}
+	});
 
 	jpInput.add(addNumberView.getView());
 	jpInput.add(jbAdd);
@@ -75,13 +71,19 @@ public class BasicStatsGUI
 	View countView = new CountView();
 	View meanView = new MeanView();
 	View medianView = new MedianView();
+	View maxView = new MaxView();
 
 	jpStats.add(new JLabel("Numbers:"));
 	jpStats.add(countView.getView());
+
 	jpStats.add(new JLabel("Median:"));
 	jpStats.add(medianView.getView());
+
 	jpStats.add(new JLabel("Mean:"));
 	jpStats.add(meanView.getView());
+
+	jpStats.add(new JLabel("Max:"));
+	jpStats.add(maxView.getView());
 
 	jfMain.getContentPane().add(jpStats, BorderLayout.CENTER);
 	
@@ -96,6 +98,7 @@ public class BasicStatsGUI
 	Views.add(meanView);
 	Views.add(medianView);
 	Views.add(numberListView);
+	Views.add(maxView);
     }
 
 

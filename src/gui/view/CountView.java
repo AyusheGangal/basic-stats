@@ -10,7 +10,6 @@ public class CountView implements View{
     {
         this.jtfCount = new JTextField(5);
 	    this.jtfCount.setEditable(false);
-        System.out.println("inside countView leaf");
     }
 
     @Override

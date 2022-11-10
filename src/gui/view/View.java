@@ -2,8 +2,6 @@ package gui.view;
 
 import java.awt.Component;
 
-import javax.swing.JTextField;
-
 import model.BasicStatsModel;
 
 

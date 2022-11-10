@@ -16,10 +16,16 @@ public class BasicStats {
    */
   public static double mean(double... numbers) {
     double sum = 0;
-    for (double num : numbers) {
-      sum += num;
+    if(numbers.length == 0)
+    {
+      return sum;
     }
-    return sum / numbers.length;
+    else{
+      for (double num : numbers) {
+        sum += num;
+      }
+      return sum / numbers.length;
+    }
   }
 
   /**

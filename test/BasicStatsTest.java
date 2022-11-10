@@ -89,4 +89,29 @@ public class BasicStatsTest {
       max = BasicStats.max(numbers3);
       assertEquals(0, max, EPS);
     }
+
+    @Test
+    public void testMean() {
+      //Median should be 8.0 since size is even
+      /* double[] numbers = {12, 12, 22, 234, 102}; */
+      double[] numbers = {12, 12, 22, 234, 102};
+
+      double mean = BasicStats.mean(numbers);
+      assertEquals(76.4, mean, EPS);
+
+      //Max should be 3 since size is 1
+      double[] numbers2 = {12, 12, 12, 12};
+      mean = BasicStats.mean(numbers2);
+      assertEquals(12, mean, EPS);
+
+      //Max should be 3 since size is 1
+      double[] numbers3 = {12};
+      mean = BasicStats.mean(numbers3);
+      assertEquals(12, mean, EPS);
+
+      //Median should be 0 since size is 0
+      double[] numbers4 = {};
+      mean = BasicStats.mean(numbers4);
+      assertEquals(0, mean, EPS);
+    }
 }

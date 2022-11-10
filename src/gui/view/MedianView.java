@@ -9,6 +9,7 @@ public class MedianView implements View{
 
     public MedianView()
     {
+        super();
         jtfMedian = new JTextField(5);
         jtfMedian.setEditable(false);
     }

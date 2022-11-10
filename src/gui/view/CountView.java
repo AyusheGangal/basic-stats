@@ -8,8 +8,9 @@ public class CountView implements View{
 
     public CountView()
     {
-        jtfCount = new JTextField(5);
-	    jtfCount.setEditable(false);
+        this.jtfCount = new JTextField(5);
+	    this.jtfCount.setEditable(false);
+        System.out.println("inside countView leaf");
     }
 
     @Override

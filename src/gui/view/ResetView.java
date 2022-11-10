@@ -19,18 +19,6 @@ public class ResetView implements View {
 
     public ResetView()
     {
-        JButton jbReset = new JButton("Reset");
-        jbReset.addActionListener(new ActionListener() {
-        // The interface ActionListener defines a call-back method actionPerformed,
-        // which is invoked if the user interacts with the GUI component -- in this
-        // case, if the user clicks the button.
-        public void actionPerformed(ActionEvent e) {
-            // Clear the ArrayList and all text fields
-            model.reset();
-
-            update(model);
-        }
-            });
     }
 
     @Override

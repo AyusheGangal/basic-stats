@@ -10,21 +10,13 @@ import model.BasicStatsModel;
 
 public class AddNumberView implements View
 {
-    private JTextField jtfNumber;
+    public JTextField jtfNumber;
     protected BasicStatsModel model;
 
     public AddNumberView()
-    {
+    { 
         jtfNumber = new JTextField(5);
         jtfNumber.setEditable(true);
-        JButton jbAdd = new JButton("Add number");
-        jbAdd.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) 
-        {
-            Double num = Double.parseDouble(jtfNumber.getText());
-            model.addNumber(num);
-    }
-        });
     }
 
 
@@ -34,10 +26,9 @@ public class AddNumberView implements View
     @Override
     public void update(BasicStatsModel model)
     {
-        // As there is nothing to update apart from resetting this textField
+        Double num = Double.parseDouble(jtfNumber.getText());
+        model.addNumber(num);
     }
-
-    
 }
 
 

@@ -1,5 +1,9 @@
 package gui.view;
 
+import java.awt.Component;
+
+import javax.swing.JTextField;
+
 import model.BasicStatsModel;
 
 
@@ -9,6 +13,14 @@ import model.BasicStatsModel;
  */
 public interface View
 {
+    Component jtfNumber = null;
+    Component jbReset = null;
+    Component jtfCount = null;
+    Component jtfMean = null;
+    Component jtfMedian = null;
+    Component jtaNumbers = null;
+    Component jbAdd = null;
+
     /**
      * Updates this View to visualize the current BasicStatsModel.
      *

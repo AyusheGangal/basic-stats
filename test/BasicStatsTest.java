@@ -69,4 +69,24 @@ public class BasicStatsTest {
       mode   = BasicStats.mode(numbers5);
       assertEquals (0, mode, EPS);
     }
+
+    @Test
+    public void testMax() {
+      //Median should be 8.0 since size is even
+      /* double[] numbers = {12, 23, 100, 3, 0, 11}; */
+      double[] numbers = {12, 23, 100, 3, 0, 11};
+
+      double max = BasicStats.max(numbers);
+      assertEquals(100.0, max, EPS);
+
+      //Max should be 3 since size is 1
+      double[] numbers2 = {12};
+      max = BasicStats.max(numbers2);
+      assertEquals(12, max, EPS);
+
+      //Median should be 0 since size is 0
+      double[] numbers3 = {};
+      max = BasicStats.max(numbers3);
+      assertEquals(0, max, EPS);
+    }
 }

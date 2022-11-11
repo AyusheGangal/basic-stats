@@ -146,11 +146,11 @@ public class BasicStatsTest {
     {
       // TODO document why this method is empty
       String addNumberViewBeforeReset = addNumberView.getView().getText();
-      String countViewBeforeReset = addNumberView.getView().getText();
-      String maxViewBeforeReset = addNumberView.getView().getText();
-      String meanViewBeforeReset = addNumberView.getView().getText();
-      String medianBeforeReset = addNumberView.getView().getText();
-      String numberListViewBeforeReset = addNumberView.getView().getText();
+      String countViewBeforeReset = countView.getView().getText();
+      String maxViewBeforeReset = maxView.getView().getText();
+      String meanViewBeforeReset = meanView.getView().getText();
+      String medianBeforeReset = medianView.getView().getText();
+      String numberListViewBeforeReset = numberListView.getView().getText();
       
       addNumberView.reset();
       countView.reset();
@@ -185,12 +185,22 @@ public class BasicStatsTest {
       model.addNumber(number);
     }    
 
-    // @Test
-    // public void TestCountView()
-    // {
-    //   double[] numbers = {134, 234, 22, 1 , 1092, 3, 0, 23};
-    //   int count = model.getArrayDouble().length;
+    @Test
+    public void TestCountView()
+    {
+      Double[] numbers = {134.0, 234.0, 22.0, 1.0 , 1092.0, 3.0, 23.0};
+      //int count = numbers.length;
+
+      for (int i = 0 ; i < numbers.length; i++) {
+        model.addNumber(numbers[i]);
+        
+      
+      double[] newNumbers = model.getArrayDouble();
+      countView.update(model);
+      
+      assertEquals(newNumbers.length, Integer.parseInt(countView.getView().getText()));
+    }
 
 
-    // }
+    }
 }

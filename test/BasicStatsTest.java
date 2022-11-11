@@ -3,7 +3,8 @@ import static org.junit.Assert.*;
 import model.BasicStatsModel;
 import gui.BasicStats;
 import gui.view.*;
-
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class BasicStatsTest {
     private static double EPS = 1e-9;
@@ -15,6 +16,9 @@ public class BasicStatsTest {
     MeanView meanView = new MeanView();
     MedianView medianView = new MedianView();
     NumberListView numberListView = new NumberListView();
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
 
     @Test
     public void testCentralTendency() {
@@ -172,6 +176,15 @@ public class BasicStatsTest {
       assertEquals(number, numbers[0], EPS);
     }    
     
+    @Test
+    public void testAddNumberFailsToCompletes()
+    {
+      Double number = null;
+      exception.expect(IllegalArgumentException.class);
+      exception.expectMessage("The number must be non-null.");
+      model.addNumber(number);
+    }    
+
     // @Test
     // public void TestCountView()
     // {

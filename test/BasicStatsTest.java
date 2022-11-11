@@ -97,11 +97,6 @@ public class BasicStatsTest {
       double[] numbers2 = {12};
       max = BasicStats.max(numbers2);
       assertEquals(12, max, EPS);
-
-      //Median should be 0 since size is 0
-      double[] numbers3 = {};
-      max = BasicStats.max(numbers3);
-      assertEquals(0, max, EPS);
     }
 
     @Test
@@ -174,16 +169,8 @@ public class BasicStatsTest {
       model.addNumber(number);
       double[] numbers = model.getArrayDouble();
       assertEquals(number, numbers[0], EPS);
-    }    
-    
-    @Test
-    public void testAddNumberFailsToCompletes()
-    {
-      Double number = null;
-      exception.expect(IllegalArgumentException.class);
-      exception.expectMessage("The number must be non-null.");
-      model.addNumber(number);
-    }    
+    }     
+
 
     @Test
     public void TestCountView()
@@ -200,7 +187,30 @@ public class BasicStatsTest {
       
       assertEquals(newNumbers.length, Integer.parseInt(countView.getView().getText()));
     }
+  }
+
+    // @Test
+    // public void testMaxFailsInputValidation()
+    // {
+    //   double[] numbers = {};
+    //   BasicStats.max(numbers);
+
+    //   exception.expect(ArrayIndexOutOfBoundsException.class);
+    //   exception.expectMessage("The array of numbers must not be empty.");
+    // }
 
 
+    @Test
+    public void TestMeanView()
+    {
+      Double[] numbers = {112.0, 12.0, 22.0, 234.0, 102.0};
+      for (int i = 0 ; i < numbers.length; i++) {
+        model.addNumber(numbers[i]);
+        
+      double[] newNumbers = model.getArrayDouble();
+      meanView.update(model);
+      
+      assertEquals(BasicStats.mean(newNumbers), Double.parseDouble(meanView.getView().getText()), EPS);
     }
+  }
 }

@@ -16,11 +16,9 @@ public class BasicStats {
    */
   public static double mean(double... numbers) {
     double sum = 0;
-    if(numbers.length == 0)
-    {
+    if (numbers.length == 0) {
       return sum;
-    }
-    else{
+    } else {
       for (double num : numbers) {
         sum += num;
       }
@@ -29,16 +27,22 @@ public class BasicStats {
   }
 
   /**
-   * Compute the mean of an array of numbers.
+   * Compute the max of an array of numbers.
    */
   public static double max(double... numbers) {
-    double max = -0.0;
-    for (int counter = 0; counter < numbers.length; counter++) {
-      if (numbers[counter] > max) {
-        max = numbers[counter];
+    if (numbers.length < 1) {
+      throw new ArrayIndexOutOfBoundsException("The array of numbers must not be empty.");
+    } 
+    else 
+    {
+      double max = -0.0;
+      for (int counter = 0; counter < numbers.length; counter++) {
+        if (numbers[counter] > max) {
+          max = numbers[counter];
+        }
       }
+      return max;
     }
-    return max;
   }
 
   /**

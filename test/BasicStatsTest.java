@@ -85,21 +85,6 @@ public class BasicStatsTest {
     }
 
     @Test
-    public void testMax() {
-      //Median should be 8.0 since size is even
-      /* double[] numbers = {12, 23, 100, 3, 0, 11}; */
-      double[] numbers = {12, 23, 100, 3, 0, 11};
-
-      double max = BasicStats.max(numbers);
-      assertEquals(100.0, max, EPS);
-
-      //Max should be 3 since size is 1
-      double[] numbers2 = {12};
-      max = BasicStats.max(numbers2);
-      assertEquals(12, max, EPS);
-    }
-
-    @Test
     public void testMean() {
       //Median should be 8.0 since size is even
       /* double[] numbers = {12, 12, 22, 234, 102}; */
@@ -189,15 +174,30 @@ public class BasicStatsTest {
     }
   }
 
-    // @Test
-    // public void testMaxFailsInputValidation()
-    // {
-    //   double[] numbers = {};
-    //   BasicStats.max(numbers);
+    @Test
+    public void testMaxFailsInputValidation()
+    {
+      double[] numbers = {};
+      BasicStats.max(numbers);
 
-    //   exception.expect(ArrayIndexOutOfBoundsException.class);
-    //   exception.expectMessage("The array of numbers must not be empty.");
-    // }
+      exception.expect(ArrayIndexOutOfBoundsException.class);
+      exception.expectMessage("The array of numbers must not be empty.");
+    }
+
+    @Test
+    public void testMax() {
+      //Median should be 8.0 since size is even
+      /* double[] numbers = {12, 23, 100, 3, 0, 11}; */
+      double[] numbers = {12, 23, 100, 3, 0, 11};
+
+      double max = BasicStats.max(numbers);
+      assertEquals(100.0, max, EPS);
+
+      //Max should be 3 since size is 1
+      double[] numbers2 = {12};
+      max = BasicStats.max(numbers2);
+      assertEquals(12, max, EPS);
+    }
 
 
     @Test

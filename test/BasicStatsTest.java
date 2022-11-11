@@ -233,6 +233,6 @@ public class BasicStatsTest {
     medianView.update(model);
     
     assertEquals(BasicStats.median(newNumbers), Double.parseDouble(medianView.getView().getText()), EPS);
+    }
   }
-}
 }

@@ -13,6 +13,7 @@ public class BasicStats {
 
   /**
    * Compute the mean of an array of numbers.
+   * @return mean of numbers.
    */
   public static double mean(double... numbers) {
     double sum = 0;
@@ -28,6 +29,8 @@ public class BasicStats {
 
   /**
    * Compute the max of an array of numbers.
+   * @return max of numbers.
+   * @exception ArrayIndexOutOfBoundsException if length of numbers is less than 1
    */
   public static double max(double... numbers) {
     if (numbers.length < 1) {
@@ -47,6 +50,7 @@ public class BasicStats {
 
   /**
    * Compute the median of an array of numbers.
+   * @return median of numbers
    */
   public static double median(double... numbers) {
     Arrays.sort(numbers);

@@ -12,19 +12,26 @@ import gui.view.*;
 
 
 /**
+ * The BasicStatsModel class stores a list of Views. This class provides
+ * the data representation for the Composite Design pattern and stores the controllers
+ * of the MVC architecture pattern.
+ * 
  * Create a simple GUI that includes:
  * - a text field and a button that allows the user to enter numbers.
  * - a button that allows the user to clear all entered numbers.
  * - a panel with labels and text fields for count, median, and mean.
  * - a text area that shows all numbers.
  *
- * For the MVC architecture pattern, these are the views and controllers.
+ * For the MVC architecture pattern, these are the controllers.
  */
+
 public class BasicStatsGUI
 {
     public static final String APP_TITLE = "Simple stats";
     private static BasicStatsModel model = new BasicStatsModel();
     private JFrame jfMain = new JFrame(APP_TITLE);
+
+	// List of all the Views or Leaf of the Composite Design Pattern.
 	private List<View> Views = new ArrayList<View>();
 	private AddNumberView addNumberView;
 
@@ -36,11 +43,12 @@ public class BasicStatsGUI
 	jfMain.setLocationRelativeTo(null);
 	
 	// Panel that shows stats about the numbers
-	
 	JPanel jpInput = new JPanel(new FlowLayout(FlowLayout.CENTER));
-	addNumberView = new AddNumberView();
-	JButton jbAdd = new JButton("Add number");
 
+	// View which displays the number which is being added
+	addNumberView = new AddNumberView();
+	// Controller for the addNumberView View
+	JButton jbAdd = new JButton("Add number");
 	jbAdd.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) 
 		{
@@ -52,7 +60,7 @@ public class BasicStatsGUI
 	jpInput.add(addNumberView.getView());
 	jpInput.add(jbAdd);
 
-
+	// Controller which resets the app
 	JButton jbReset = new JButton("Reset");
 	jbReset.addActionListener(new ActionListener() {
 	// The interface ActionListener defines a call-back method actionPerformed,
@@ -66,7 +74,8 @@ public class BasicStatsGUI
 		});
 
 	jpInput.add(jbReset);
-
+	
+	// Panel which displays all the stats, created by adding separate views
 	JPanel jpStats = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	View countView = new CountView();
 	View meanView = new MeanView();
@@ -94,6 +103,7 @@ public class BasicStatsGUI
 	
 	jfMain.getContentPane().add(jpInput, BorderLayout.NORTH);
 
+	// Adding views to the List Views for easy updation
 	Views.add(countView);
 	Views.add(meanView);
 	Views.add(medianView);
@@ -102,6 +112,12 @@ public class BasicStatsGUI
     }
 
 
+	/**
+	 * Updates different views according to the length
+	 * of the array of numbers passed.
+	 * Will reset the app to intialConfig if Array length = 0
+	 * @param model The BasicStatsModel
+	 */
 	public void update(BasicStatsModel model) {
 	if (model.getArrayDouble().length == 0) {
 		for(View view: Views)

@@ -156,6 +156,14 @@ public class BasicStatsTest {
       assertEquals(number, numbers[0], EPS);
     }     
 
+    @Test
+     public void testAddNumberFailsToCompletes()
+     {
+       Double number = null;
+       exception.expect(IllegalArgumentException.class);
+       exception.expectMessage("The number must be non-null.");
+       model.addNumber(number);
+     }    
 
     @Test
     public void TestCountView()
@@ -178,14 +186,14 @@ public class BasicStatsTest {
     public void testMaxFailsInputValidation()
     {
       double[] numbers = {};
-      BasicStats.max(numbers);
-
+  
       exception.expect(ArrayIndexOutOfBoundsException.class);
       exception.expectMessage("The array of numbers must not be empty.");
+      BasicStats.max(numbers);
     }
 
     @Test
-    public void testMax() {
+    public void testMaxComplete() {
       //Median should be 8.0 since size is even
       /* double[] numbers = {12, 23, 100, 3, 0, 11}; */
       double[] numbers = {12, 23, 100, 3, 0, 11};

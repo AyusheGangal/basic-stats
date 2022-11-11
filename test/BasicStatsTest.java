@@ -213,4 +213,18 @@ public class BasicStatsTest {
       assertEquals(BasicStats.mean(newNumbers), Double.parseDouble(meanView.getView().getText()), EPS);
     }
   }
+
+  @Test
+  public void TestMedianView()
+  {
+    Double[] numbers = {112.0, 12.0, 22.0, 234.0, 102.0};
+    for (int i = 0 ; i < numbers.length; i++) {
+      model.addNumber(numbers[i]);
+      
+    double[] newNumbers = model.getArrayDouble();
+    medianView.update(model);
+    
+    assertEquals(BasicStats.median(newNumbers), Double.parseDouble(medianView.getView().getText()), EPS);
+  }
+}
 }

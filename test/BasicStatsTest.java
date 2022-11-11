@@ -1,10 +1,20 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+import model.BasicStatsModel;
 import gui.BasicStats;
+import gui.view.*;
+
 
 public class BasicStatsTest {
     private static double EPS = 1e-9;
+    BasicStatsModel model = new BasicStatsModel();
+
+    AddNumberView addNumberView = new AddNumberView();
+    CountView countView = new CountView();
+    MaxView maxView = new MaxView();
+    MeanView meanView = new MeanView();
+    MedianView medianView = new MedianView();
+    NumberListView numberListView = new NumberListView();
 
     @Test
     public void testCentralTendency() {
@@ -114,4 +124,60 @@ public class BasicStatsTest {
       mean = BasicStats.mean(numbers4);
       assertEquals(0, mean, EPS);
     }
+
+    @Test
+    public void testInitialConfig()
+    {
+      // TODO document why this method is empty
+      assertEquals("", addNumberView.getView().getText());
+      assertEquals("", countView.getView().getText());
+      assertEquals("", maxView.getView().getText());
+      assertEquals("", meanView.getView().getText());
+      assertEquals("", medianView.getView().getText());
+      assertEquals("", numberListView.getView().getText());
+    }
+
+    @Test
+    public void testResetAsInitialConfig()
+    {
+      // TODO document why this method is empty
+      String addNumberViewBeforeReset = addNumberView.getView().getText();
+      String countViewBeforeReset = addNumberView.getView().getText();
+      String maxViewBeforeReset = addNumberView.getView().getText();
+      String meanViewBeforeReset = addNumberView.getView().getText();
+      String medianBeforeReset = addNumberView.getView().getText();
+      String numberListViewBeforeReset = addNumberView.getView().getText();
+      
+      addNumberView.reset();
+      countView.reset();
+      maxView.reset();
+      meanView.reset();
+      medianView.reset();
+      numberListView.reset();
+      
+      assertEquals(addNumberView.getView().getText(), addNumberViewBeforeReset);
+      assertEquals(countView.getView().getText(), countViewBeforeReset);
+      assertEquals(maxView.getView().getText(), maxViewBeforeReset);
+      assertEquals(meanView.getView().getText(), meanViewBeforeReset);
+      assertEquals(medianView.getView().getText(), medianBeforeReset);
+      assertEquals(numberListView.getView().getText(), numberListViewBeforeReset);
+    }
+
+    @Test
+    public void testAddNumberCompletes()
+    {
+      double number = 20.0;
+      model.addNumber(number);
+      double[] numbers = model.getArrayDouble();
+      assertEquals(number, numbers[0], EPS);
+    }    
+    
+    // @Test
+    // public void TestCountView()
+    // {
+    //   double[] numbers = {134, 234, 22, 1 , 1092, 3, 0, 23};
+    //   int count = model.getArrayDouble().length;
+
+
+    // }
 }
